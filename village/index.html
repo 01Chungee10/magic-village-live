@@ -113,6 +113,7 @@ button:disabled{opacity:.5;cursor:wait}button:focus-visible,a:focus-visible{outl
           <div id="meter" role="progressbar" aria-label="3D 마을 준비" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><div id="bar"></div></div>
           <button id="cancel-start" type="button" hidden>선택 화면으로 돌아가기</button>
           <div class="title-entry-links">
+            <a class="vh-entry-record-link" id="alternate-3d" href="../explore.html?who=tae">🗺️ 가벼운 3D 지도 열기</a>
             <a class="vh-entry-record-link" href="../learning.html">📚 학습하기</a>
             <a class="vh-entry-record-link" href="../learning.html?view=hanja">📜 한자 수련</a>
             <a class="vh-entry-parent-link" href="../learning.html?view=parents">👪 보호자</a>
@@ -140,8 +141,13 @@ const nativeQA=entryParams.get('nativeQA')==='1';
 const goDestination=entryParams.get('go');
 const validGo=validWho&&new Set(['math','korean','english','hanja','kma','practice','academy','growth','pond','ocean','career']).has(goDestination)?goDestination:null;
 if(validWho)Progress.selectLearner(requestedWho);
+// Keep validated direct-entry parameters on the URL so refresh, back/forward,
+// sharing and iOS tab restoration reopen the same 3D destination.
 for(const key of [...entryParams.keys()]){
-  if(key==='who'||key==='autostart'||key==='go'){entryParams.delete(key);continue;}
+  if(key==='who'){if(!validWho)entryParams.delete(key);continue;}
+  if(key==='autostart'){if(!autoStartRequested)entryParams.delete(key);continue;}
+  if(key==='go'){if(!validGo)entryParams.delete(key);continue;}
+  if(key==='v'){if(!/^\d{1,3}$/.test(entryParams.get(key)||''))entryParams.delete(key);continue;}
   if(!['environmentPreview','motionPreview','nativeQA'].includes(key)||entryParams.get(key)!=='1')entryParams.delete(key);
 }
 const normalizedQuery=entryParams.toString();
@@ -176,6 +182,10 @@ for(const control of document.querySelectorAll('[data-learner]')){
  control.addEventListener('click',()=>{
    if(start.disabled)return;
    Progress.selectLearner(control.dataset.learner);
+   if(entryParams.has('who')){
+     entryParams.set('who',control.dataset.learner);
+     history.replaceState(history.state,'',location.pathname+'?'+entryParams+location.hash);
+   }
    document.querySelectorAll('[data-learner]').forEach(button=>
      button.setAttribute('aria-pressed',String(button===control)));
    syncEntryLearner();
@@ -428,6 +438,8 @@ start.addEventListener('click', async () => {
       dataUrl: base + '.data' + suffix + '?v=cohesive-v46-20261105',
       frameworkUrl: base + '.framework.js' + suffix + '?v=cohesive-v46-20261105',
       codeUrl: base + '.wasm' + suffix + '?v=cohesive-v46-20261105',
+      // Reduce WebGL framebuffer memory on high-DPI mobile browsers.
+      devicePixelRatio: matchMedia('(pointer: coarse)').matches ? 1 : Math.min(1.5,window.devicePixelRatio||1),
       streamingAssetsUrl: 'StreamingAssets',
       companyName: 'Family Learning',
       productName: 'Sparkle Fairy Village',
@@ -437,7 +449,9 @@ start.addEventListener('click', async () => {
       const percent=Math.max(0,Math.min(100,Math.round(progress*100)));
       bar.style.width=percent+'%';
       meter.setAttribute('aria-valuenow',String(percent));
-      status.textContent='마법마을 준비 '+percent+'% · 가벼운 2D 모험으로 바꿀 수 있어요.';
+      status.textContent=percent>=90
+        ? '마을 장면을 여는 중이에요 ('+percent+'%). 첫 실행은 조금 더 걸릴 수 있어요. 🗺️ 가벼운 3D 지도도 열 수 있어요.'
+        : '마법마을 준비 '+percent+'% · 가벼운 2D 모험이나 3D 지도로 바꿀 수 있어요.';
     }),{timeoutMs:120000,onLateResolve:disposeUnity});
     if(task.signal.aborted||startup!==task){await disposeUnity(loadedInstance);return;}
     instance=loadedInstance;
@@ -504,8 +518,8 @@ start.addEventListener('click', async () => {
     const failedInstance=instance;instance=null;
     void disposeUnity(failedInstance);
     const message=error?.name==='TimeoutError'?
-      '3D 모험 준비가 오래 걸리고 있어요. 가벼운 2D 모험이나 학습하기로 바로 이어가세요.':
-      '3D 모험을 준비하지 못했어요. 다시 시작하거나 가벼운 2D 모험을 골라 주세요.';
+      '3D 마을 준비가 오래 걸려요. 다시 시도하거나 아래 가벼운 3D 지도로 들어가세요.':
+      '3D 마을을 열지 못했어요. 다시 시도하거나 아래 가벼운 3D 지도로 들어가세요.';
     restoreEntry(message);
     console.warn('[Village startup]',error);
   }
