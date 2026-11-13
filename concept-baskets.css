@@ -1,0 +1,78 @@
+/* A small, explicit learning surface, using the village's paper and purple tokens. */
+.basket-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px 24px;margin-block:20px;padding:24px;background:#fff9e9;border:2px solid #c7a373;border-radius:24px;color:var(--v46-ink,#344a58)}
+.basket-entry h2{margin-block:5px 8px;font-size:28px}.basket-entry p{font-size:18px;line-height:1.6}.basket-entry small{grid-column:1/-1;font-size:16px}.basket-eyebrow{font-size:16px;color:var(--deep,#644299);line-height:1.5}
+.baskets-panel{padding:28px;background:#fffdf5;border:2px solid #c7a373;border-radius:24px;color:#344a58;min-width:0}
+.baskets-panel h1{font-size:30px;line-height:1.35;margin-block:6px 12px}.baskets-panel h2{font-size:24px;line-height:1.5}
+.basket-heading{display:flex;align-items:start;justify-content:space-between;gap:12px}.basket-heading>div{min-width:0}.basket-read{flex:none;white-space:nowrap}
+.basket-story{font-size:19px;line-height:1.65;margin-block:8px 16px;word-break:keep-all;overflow-wrap:anywhere}
+.basket-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:520px;margin:16px auto}
+.basket-group{min-width:0;text-align:center}.basket-group h3{font-size:18px;margin-block:0 8px}
+.basket-vessel{position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:5px;min-height:112px;padding:12px 8px;border:3px solid #87633c;border-top-width:6px;border-radius:12px 12px 30px 30px;background:repeating-linear-gradient(0deg,#f6deb8 0 12px,#e6c593 12px 15px)}
+.basket-fruit{display:inline-flex;width:30px;height:34px;flex:none}.basket-fruit svg{width:100%;height:100%}
+.basket-count{font-size:25px;margin-block:8px 0}.basket-count small{font-size:17px;margin-inline-start:4px}
+.basket-empty{font-size:17px;color:#59452f}.basket-vessel.is-covered{background:#e8dbf4;border-style:solid;border-color:#644299}
+.basket-cover{font-size:42px;color:#644299}.basket-total{text-align:center;font-size:20px}.basket-total strong{font-weight:400;color:#644299}
+.basket-equation{font-size:27px;text-align:center;margin-block:12px;line-height:1.5;font-variant-numeric:tabular-nums}.basket-equation strong{font-weight:400;color:#644299}
+.basket-move-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-block:16px}.basket-move-controls button{flex:1;min-width:170px;max-width:260px;min-height:48px;white-space:normal}
+.basket-note{font-size:16px;line-height:1.6;color:#586375;margin-block:12px;overflow-wrap:anywhere}
+.basket-primary{display:block;min-height:50px;width:100%;margin-block:16px 0;white-space:normal}
+.basket-scene{margin:18px 0}.basket-scene figcaption{text-align:center;font-size:18px;line-height:1.6;margin-block:10px}
+.basket-prompt{margin-block:20px 12px}.basket-answers{display:grid;grid-template-columns:repeat(6,minmax(44px,1fr));gap:8px}
+.basket-answers button{min-height:50px;min-width:0;border:2px solid #9d84b4;border-radius:12px;background:#fff;color:#403153;font-size:24px;padding:10px;overflow-wrap:anywhere}
+.basket-answers button[aria-pressed=true]{background:#644299;color:#fff;border-color:#644299;box-shadow:inset 0 0 0 2px #fff}
+.basket-answers.is-choice{grid-template-columns:1fr}.basket-answers.is-choice button{font-size:20px;text-align:start;line-height:1.5}
+.basket-help{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;margin-block:18px 0;padding-block-start:14px;border-top:1px solid #d8bd90}
+.basket-help p{font-size:18px;line-height:1.6}.basket-help button{white-space:normal}
+.basket-error{color:#9c2843;font-size:17px;min-height:1.4em;margin-block-start:8px}
+.basket-explanation{display:grid;gap:10px;padding:16px;border-radius:14px;background:#f0e9f8;font-size:20px;line-height:1.65}
+.basket-feedback-actions{display:flex;flex-wrap:wrap;gap:12px;margin-block-start:20px}.basket-feedback-actions button{flex:1;min-height:50px;white-space:normal}
+.basket-chairs{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:14px;border-radius:16px;background:#f3eddb}
+.basket-chair{display:block;position:relative;width:48px;height:66px;border:3px solid #87633c;border-radius:8px 8px 0 0;border-bottom:0}
+.basket-chair>span{display:block;height:40px;font-size:30px;text-align:center;line-height:40px}.basket-chair i{display:block;position:absolute;inset:39px -5px auto;height:7px;background:#87633c;border-radius:3px}
+.basket-dot-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:520px;margin:auto}
+.basket-dot-groups>div{display:flex;justify-content:center;align-content:center;flex-wrap:wrap;gap:8px;min-height:110px;padding:16px;background:#eee5fa;border:2px solid #8c72aa;border-radius:16px}
+.basket-dot-groups i{display:block;width:27px;height:27px;border-radius:50%;background:#644299;border:2px solid #403153}
+.basket-summary{margin-block:20px;padding:18px;border:1px solid #d8bd90;border-radius:16px;background:#fffdf5;font-size:18px;line-height:1.6;text-align:start}
+.basket-summary h3{font-size:22px;margin-block-end:10px}.basket-summary summary{cursor:pointer;color:#644299;padding-block:12px;min-height:44px}
+.basket-summary dl{margin-block:4px 12px}.basket-summary dl>div{display:flex;justify-content:space-between;gap:16px;border-block-end:1px solid #eadfca;padding-block:10px}.basket-summary dd{margin:0;flex:none}
+.baskets-panel :is(button,a):focus-visible,.basket-entry button:focus-visible,.basket-summary summary:focus-visible{outline:3px solid #644299;outline-offset:3px}
+@media(hover:hover){.basket-answers button:not([aria-pressed=true]):hover{background:#f0e9f8}}
+@media(prefers-reduced-motion:no-preference){.baskets-panel button:not(:disabled):active,.basket-entry button:not(:disabled):active{transform:scale(.96);transition:transform 150ms ease-out}}
+@media(prefers-reduced-motion:reduce){.baskets-panel button,.basket-entry button{transition:none;transform:none}}
+@media(max-width:600px){.basket-entry{grid-template-columns:1fr;padding:18px;gap:12px}.basket-entry h2{font-size:25px}.basket-entry .primary{min-height:50px;width:100%}.baskets-panel{padding:18px 14px}.baskets-panel h1{font-size:26px}.baskets-panel h2{font-size:22px}.basket-heading{flex-wrap:wrap}.basket-story{font-size:18px}.basket-help{grid-template-columns:1fr;gap:6px}.basket-help button{justify-self:start}.basket-pair{gap:12px}.basket-summary dl>div{flex-wrap:wrap;gap:4px 12px}.basket-answers{grid-template-columns:repeat(5,minmax(44px,1fr))}}
+@media(max-width:380px){.basket-answers{grid-template-columns:repeat(4,minmax(44px,1fr))}.basket-answers.is-choice{grid-template-columns:1fr}.basket-vessel{padding:10px 6px;gap:3px}.basket-fruit{width:26px;height:30px}.basket-equation{font-size:24px}.basket-feedback-actions{flex-direction:column}}
+@media(forced-colors:active){.basket-answers button[aria-pressed=true]{outline:3px solid Highlight}.basket-vessel,.basket-chair,.basket-dot-groups i{border-color:CanvasText}.baskets-panel :is(button,a):focus-visible{outline-color:Highlight}}
+
+.basket-dot-groups .basket-group-label{flex-basis:100%;text-align:center;font-size:17px;margin-block-end:6px}.basket-dot-groups .basket-yellow{background:#fff3cf;border-color:#87633c}.basket-dot-groups .basket-blue{background:#e4eefb;border-color:#546c94}.basket-yellow i{background:#e7b632;border-color:#87633c}.basket-blue i{background:#4d7eb9;border-color:#344a58}.basket-dot-groups span[aria-hidden]{font-size:26px}
+
+.baskets-panel button{min-height:48px}
+
+/* Use one natural page scroller for this hands-on mission; do not bury actions behind the app footer. */
+#app:has(.basket-game){height:auto;min-height:100dvh;grid-template-rows:auto minmax(0,1fr) auto}
+#app .shell:has(.basket-game){overflow:visible;padding-block-end:16px}
+#app .basket-game{flex:0 0 auto}
+#app:has(.basket-game)>.footer{padding-block:12px}
+body:has(.basket-game) #motion-stage{display:none}
+.basket-move-controls button{min-width:130px}
+@media(max-width:600px){.basket-vessel{min-height:96px}.basket-move-controls{gap:8px}.basket-move-controls button{font-size:17px;padding:10px 7px}.baskets-panel{padding-block:16px}}
+
+/* Parent evidence already has separate value, label and count elements; give each room to read. */
+.parent-dashboard{display:grid;gap:20px;min-width:0;padding:16px;font-size:1rem;line-height:1.6;overflow-wrap:break-word}
+.parent-dashboard>*{min-width:0;margin:0}
+.parent-dashboard .parent-profile-tabs{display:flex;gap:8px}
+.parent-dashboard .parent-profile-tabs button{flex:1}
+.parent-dashboard .parent-dashboard-intro{display:grid;gap:10px}
+.parent-dashboard .parent-dashboard-intro small{display:block;margin-block-end:6px;font-size:.875rem;line-height:1.5}
+.parent-dashboard .parent-dashboard-intro h3{font-size:1.375rem;line-height:1.3;word-break:keep-all;text-wrap:balance}
+.parent-dashboard .parent-due-badge{justify-self:start;padding:4px 10px;border:1px solid #d8bd90;border-radius:999px;background:#fffdf5;font-size:.875rem;line-height:1.5;white-space:nowrap}
+.parent-dashboard .parent-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.parent-dashboard .parent-kpis>div{display:grid;align-content:start;gap:4px;padding:10px 12px;border:1px solid #d8bd90;border-radius:12px;background:#fffdf5;min-width:0}
+.parent-dashboard .parent-kpis strong{font-size:1.75rem;font-weight:400;line-height:1.2;font-variant-numeric:tabular-nums}
+.parent-dashboard .parent-kpis span{font-size:1rem;line-height:1.4}
+.parent-dashboard .parent-kpis small{font-size:.875rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.parent-dashboard .parent-actions-panel h3{margin-block-end:12px;font-size:1.25rem;line-height:1.3}
+.parent-dashboard .parent-actions-panel p{font-size:1rem;line-height:1.6;word-break:keep-all}
+.parent-dashboard .parent-actions-panel p+p{margin-block-start:12px}
+.parent-dashboard .basket-summary{font-size:1rem}
+.parent-dashboard .basket-summary h3{font-size:1.25rem;line-height:1.3}
+@media(max-width:360px){.parent-dashboard{padding:12px}.parent-dashboard .parent-kpis>div{padding:10px}.parent-dashboard .parent-dashboard-intro h3{font-size:1.25rem}}

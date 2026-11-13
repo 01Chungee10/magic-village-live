@@ -1,0 +1,205 @@
+{
+  "version": 48,
+  "source_v41": "assets/blender-v41/sparkle-magic-world-v41.blend",
+  "placements": [
+    {
+      "pack": "food-kit",
+      "asset": "apple",
+      "position": [
+        -15.18,
+        0.15,
+        1.19
+      ],
+      "size": 0.5,
+      "source": "assets/blender-v48/source/kenney/food-kit/apple.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "apple",
+      "position": [
+        -14.69,
+        0.08,
+        1.19
+      ],
+      "size": 0.48,
+      "source": "assets/blender-v48/source/kenney/food-kit/apple.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "strawberry",
+      "position": [
+        -15.0,
+        0.5,
+        1.19
+      ],
+      "size": 0.39,
+      "source": "assets/blender-v48/source/kenney/food-kit/strawberry.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "pear",
+      "position": [
+        -7.56,
+        0.2,
+        1.19
+      ],
+      "size": 0.45,
+      "source": "assets/blender-v48/source/kenney/food-kit/pear.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "carrot",
+      "position": [
+        -7.04,
+        0.06,
+        1.19
+      ],
+      "size": 0.44,
+      "source": "assets/blender-v48/source/kenney/food-kit/carrot.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "strawberry",
+      "position": [
+        -7.3,
+        0.51,
+        1.19
+      ],
+      "size": 0.37,
+      "source": "assets/blender-v48/source/kenney/food-kit/strawberry.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "bookcaseopen",
+      "position": [
+        -12.0,
+        11.55,
+        0.87
+      ],
+      "size": 1.95,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/bookcaseopen.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "books",
+      "position": [
+        -11.22,
+        10.57,
+        0.87
+      ],
+      "size": 0.69,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/books.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "chairrounded",
+      "position": [
+        -5.8,
+        11.4,
+        0.87
+      ],
+      "size": 1.3,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/chairrounded.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "lamproundtable",
+      "position": [
+        -5.75,
+        9.55,
+        0.87
+      ],
+      "size": 0.86,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/lamproundtable.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "pottedplant",
+      "position": [
+        -12.6,
+        8.8,
+        0.87
+      ],
+      "size": 1.2,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/pottedplant.glb"
+    },
+    {
+      "pack": "food-kit",
+      "asset": "cake-birthday",
+      "position": [
+        5.55,
+        -11.25,
+        0.95
+      ],
+      "size": 0.85,
+      "source": "assets/blender-v48/source/kenney/food-kit/cake-birthday.glb"
+    },
+    {
+      "pack": "furniture-kit",
+      "asset": "table",
+      "position": [
+        5.6,
+        -11.28,
+        0.86
+      ],
+      "size": 1.72,
+      "source": "assets/blender-v48/source/kenney/furniture-kit/table.glb"
+    },
+    {
+      "pack": "space-kit",
+      "asset": "astronauta",
+      "position": [
+        -6.6,
+        -12.25,
+        0.84
+      ],
+      "size": 1.75,
+      "source": "assets/blender-v48/source/kenney/space-kit/astronauta.glb"
+    },
+    {
+      "pack": "space-kit",
+      "asset": "desk-computer",
+      "position": [
+        -2.25,
+        -12.36,
+        0.84
+      ],
+      "size": 1.52,
+      "source": "assets/blender-v48/source/kenney/space-kit/desk-computer.glb"
+    },
+    {
+      "pack": "space-kit",
+      "asset": "satellitedish",
+      "position": [
+        -1.1,
+        -10.45,
+        0.84
+      ],
+      "size": 1.15,
+      "source": "assets/blender-v48/source/kenney/space-kit/satellitedish.glb"
+    },
+    {
+      "pack": "cube-pets",
+      "asset": "animal-bee",
+      "position": [
+        -16.3,
+        7.1,
+        2.15
+      ],
+      "size": 0.95,
+      "source": "assets/blender-v48/source/kenney/cube-pets/animal-bee.glb"
+    },
+    {
+      "pack": "cube-pets",
+      "asset": "animal-parrot",
+      "position": [
+        8.1,
+        -6.55,
+        2.1
+      ],
+      "size": 0.92,
+      "source": "assets/blender-v48/source/kenney/cube-pets/animal-parrot.glb"
+    }
+  ],
+  "note": "Travel-map scenery only, not Unity interactive mesh"
+}

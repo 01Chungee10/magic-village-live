@@ -1,0 +1,606 @@
+{
+  "id": "fairy-baskets",
+  "subject": "math",
+  "title": "요정의 두 바구니",
+  "description": "옮기고 가려 보며 전체와 부분을 알아봐요.",
+  "emoji": "🧺",
+  "minStage": 1,
+  "maxStage": 2,
+  "adventure": true,
+  "conceptMission": true,
+  "canonicalConcept": "math.part-whole",
+  "prerequisite": "물건을 하나씩 짚으며 5까지 세어 볼 수 있어요.",
+  "offline": "바구니 두 개와 큰 블록 5개를 준비해요. 한 개씩 옮기고 모두 몇 개인지 살펴보세요. 한 바구니를 가린 뒤 안에 든 수를 생각해 보세요.",
+  "questions": [
+    {
+      "id": "fairy-baskets-01-predict",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "옮기기 전에 생각해요",
+      "story": "딸기는 모두 5개예요. 왼쪽 바구니에 2개, 오른쪽 바구니에 3개가 있어요.",
+      "prompt": "왼쪽에서 오른쪽으로 1개를 옮기면, 오른쪽에는 몇 개가 될까요?",
+      "explanation": [
+        "오른쪽 3개에 1개가 오면 4개가 돼요.",
+        "왼쪽 1개와 오른쪽 4개를 합치면 모두 5개예요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 4,
+        "max": 5,
+        "emoji": "🍓",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "3+1",
+        "value": 4
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "왼쪽 바구니",
+            "emoji": "🍓",
+            "count": 2
+          },
+          {
+            "label": "오른쪽 바구니",
+            "emoji": "🍓",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "predict",
+        "total": 5,
+        "left": 2,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "오른쪽 바구니에 있는 딸기부터 살펴봐요.",
+          "오른쪽 3개에 옮겨 오는 1개를 붙여 세어 보세요.",
+          "오른쪽은 4개, 왼쪽은 1개가 돼요. 두 바구니를 합치면 여전히 5개예요."
+        ],
+        "moveFrom": "left",
+        "targetLeft": 1
+      }
+    },
+    {
+      "id": "fairy-baskets-02-hidden",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "가려진 바구니",
+      "story": "딸기는 모두 4개예요. 왼쪽에 1개가 보이고, 오른쪽 바구니는 가려져 있어요.",
+      "prompt": "가려진 오른쪽 바구니에는 몇 개가 있을까요?",
+      "explanation": [
+        "전체 4개 중에서 왼쪽에 있는 1개를 빼요.",
+        "4 − 1 = 3, 오른쪽에는 딸기 3개가 있어요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 3,
+        "max": 4,
+        "emoji": "🍓",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "4-1",
+        "value": 3
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "보이는 왼쪽 바구니",
+            "emoji": "🍓",
+            "count": 1
+          }
+        ]
+      },
+      "mission": {
+        "kind": "hidden",
+        "total": 4,
+        "left": 1,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "두 바구니에 든 딸기가 모두 몇 개인지 떠올려요.",
+          "전체 4개에서 보이는 1개를 빼고 나머지를 세어 보세요.",
+          "보이는 1개와 가려진 3개를 합치면 4개예요. 오른쪽에는 3개가 있어요."
+        ],
+        "hiddenSide": "right"
+      }
+    },
+    {
+      "id": "fairy-baskets-03-chairs",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "요정의 빈자리",
+      "story": "의자는 모두 5개예요. 친구들이 3자리에 한 명씩 앉아 있어요.",
+      "prompt": "친구가 더 앉을 수 있는 빈자리는 몇 개일까요?",
+      "explanation": [
+        "전체 5자리에서 친구가 앉은 3자리를 빼요.",
+        "5 − 3 = 2, 빈자리는 2개예요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 2,
+        "max": 5,
+        "emoji": "🪑",
+        "unit": "자리"
+      },
+      "mathCheck": {
+        "expression": "5-3",
+        "value": 2
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "전체 의자",
+            "emoji": "🪑",
+            "count": 5
+          },
+          {
+            "label": "앉은 친구",
+            "emoji": "🧚",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "transfer",
+        "total": 5,
+        "left": 3,
+        "context": "chairs",
+        "unit": "자리",
+        "emoji": "🪑",
+        "hints": [
+          "전체 자리와 친구가 앉은 자리를 살펴봐요.",
+          "의자 5개 중에서 친구가 앉은 3자리를 빼고 세어 보세요.",
+          "친구가 앉은 3자리와 빈 2자리를 합치면 5자리예요. 빈자리는 2개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-04-represent",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "점을 식으로 말해요",
+      "story": "노란 점 2개와 파란 점 2개가 있어요.",
+      "prompt": "두 무리를 합친 모습을 나타낸 식은 무엇일까요?",
+      "explanation": [
+        "노란 점 2개와 파란 점 2개를 더해요.",
+        "2 + 2 = 4, 점은 모두 4개예요."
+      ],
+      "choices": [
+        "2 + 1 = 3",
+        "2 + 2 = 4",
+        "4 + 2 = 6"
+      ],
+      "answer": 1,
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "노란 점",
+            "emoji": "🟡",
+            "count": 2
+          },
+          {
+            "label": "파란 점",
+            "emoji": "🔵",
+            "count": 2
+          }
+        ]
+      },
+      "mission": {
+        "kind": "represent",
+        "total": 4,
+        "left": 2,
+        "context": "dots",
+        "unit": "개",
+        "emoji": "⭐",
+        "hints": [
+          "노란 점과 파란 점을 각각 세어 봐요.",
+          "노란 점 2개와 파란 점 2개를 더하는 식을 찾아요.",
+          "2 + 2 = 4예요. 두 무리를 합치면 점은 모두 4개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-05-explain",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "친구의 말을 고쳐요",
+      "story": "왼쪽에 딸기 1개, 오른쪽에 4개가 있어요. 두 바구니 사이에서 딸기를 옮기려고 해요.",
+      "prompt": "친구들의 말 중에서 어떤 말을 고쳐야 할까요?",
+      "explanation": [
+        "딸기가 들어 있는 바구니만 바뀌고, 새 딸기가 생기지는 않아요.",
+        "두 바구니를 합치면 언제나 딸기 5개예요."
+      ],
+      "choices": [
+        "1개를 옮겨도 모두 5개예요.",
+        "왼쪽이 2개면 오른쪽은 3개예요.",
+        "옮길 때마다 딸기가 더 생겨요."
+      ],
+      "answer": 2,
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "왼쪽 바구니",
+            "emoji": "🍓",
+            "count": 1
+          },
+          {
+            "label": "오른쪽 바구니",
+            "emoji": "🍓",
+            "count": 4
+          }
+        ]
+      },
+      "mission": {
+        "kind": "explain",
+        "total": 5,
+        "left": 1,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "딸기를 새로 가져오거나 밖으로 꺼내지는 않았어요.",
+          "한 바구니에서 다른 바구니로 옮겨도 두 바구니를 합친 수는 같아요.",
+          "옮긴다고 딸기가 더 생기지는 않아요. 두 바구니의 딸기는 계속 5개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-06-stickers",
+      "level": 1,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "스티커를 나눠 붙여요",
+      "story": "스티커 3개를 노란 종이와 파란 종이에 나눠 붙였어요. 노란 종이에 3개가 있어요.",
+      "prompt": "파란 종이에 붙인 스티커는 몇 개일까요?",
+      "explanation": [
+        "전체 3개가 모두 노란 종이에 있어요.",
+        "3 − 3 = 0, 파란 종이에는 스티커가 없어요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 0,
+        "max": 3,
+        "emoji": "⭐",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "3-3",
+        "value": 0
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "노란 종이에 붙인 스티커",
+            "emoji": "⭐",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "transfer",
+        "total": 3,
+        "left": 3,
+        "context": "dots",
+        "unit": "개",
+        "emoji": "⭐",
+        "hints": [
+          "스티커는 모두 3개예요. 어디에 붙였는지 살펴봐요.",
+          "전체 3개를 모두 노란 종이에 붙였어요. 남은 스티커를 생각해 보세요.",
+          "노란 종이에 3개, 파란 종이에 0개예요. 하나도 없을 때는 0이라고 말해요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-07-predict",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "반대쪽으로 옮겨요",
+      "story": "딸기는 모두 8개예요. 왼쪽 바구니에 5개, 오른쪽 바구니에 3개가 있어요.",
+      "prompt": "오른쪽에서 왼쪽으로 1개를 옮기면, 오른쪽에는 몇 개가 남을까요?",
+      "explanation": [
+        "오른쪽 3개에서 1개가 왼쪽으로 가면 2개가 남아요.",
+        "왼쪽 6개와 오른쪽 2개를 합치면 모두 8개예요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 2,
+        "max": 8,
+        "emoji": "🍓",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "3-1",
+        "value": 2
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "왼쪽 바구니",
+            "emoji": "🍓",
+            "count": 5
+          },
+          {
+            "label": "오른쪽 바구니",
+            "emoji": "🍓",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "predict",
+        "total": 8,
+        "left": 5,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "딸기를 보내는 오른쪽 바구니부터 살펴봐요.",
+          "오른쪽 3개 중에서 1개가 왼쪽으로 가요. 오른쪽에 남는 수를 세어 보세요.",
+          "오른쪽에는 2개, 왼쪽에는 6개가 있어요. 합치면 여전히 8개예요."
+        ],
+        "moveFrom": "right",
+        "targetLeft": 6
+      }
+    },
+    {
+      "id": "fairy-baskets-08-hidden",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "더 큰 바구니의 비밀",
+      "story": "딸기는 모두 9개예요. 왼쪽에 3개가 보이고, 오른쪽 바구니는 가려져 있어요.",
+      "prompt": "가려진 오른쪽 바구니에는 몇 개가 있을까요?",
+      "explanation": [
+        "전체 9개 중에서 왼쪽에 있는 3개를 빼요.",
+        "9 − 3 = 6, 오른쪽에는 딸기 6개가 있어요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 6,
+        "max": 9,
+        "emoji": "🍓",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "9-3",
+        "value": 6
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "보이는 왼쪽 바구니",
+            "emoji": "🍓",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "hidden",
+        "total": 9,
+        "left": 3,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "보이는 딸기와 가려진 딸기를 합치면 모두 9개예요.",
+          "전체 9개에서 보이는 3개를 빼고 나머지를 세어 보세요.",
+          "보이는 3개와 가려진 6개를 합치면 9개예요. 오른쪽에는 6개가 있어요."
+        ],
+        "hiddenSide": "right"
+      }
+    },
+    {
+      "id": "fairy-baskets-09-chairs",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "더 많은 친구의 자리",
+      "story": "의자는 모두 7개예요. 친구들이 3자리에 한 명씩 앉아 있어요.",
+      "prompt": "친구가 더 앉을 수 있는 빈자리는 몇 개일까요?",
+      "explanation": [
+        "전체 7자리에서 친구가 앉은 3자리를 빼요.",
+        "7 − 3 = 4, 빈자리는 4개예요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 4,
+        "max": 7,
+        "emoji": "🪑",
+        "unit": "자리"
+      },
+      "mathCheck": {
+        "expression": "7-3",
+        "value": 4
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "전체 의자",
+            "emoji": "🪑",
+            "count": 7
+          },
+          {
+            "label": "앉은 친구",
+            "emoji": "🧚",
+            "count": 3
+          }
+        ]
+      },
+      "mission": {
+        "kind": "transfer",
+        "total": 7,
+        "left": 3,
+        "context": "chairs",
+        "unit": "자리",
+        "emoji": "🪑",
+        "hints": [
+          "친구가 앉은 자리와 빈자리를 합치면 전체 자리예요.",
+          "의자 7개 중에서 친구가 앉은 3자리를 빼고 세어 보세요.",
+          "친구가 앉은 3자리와 빈 4자리를 합치면 7자리예요. 빈자리는 4개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-10-represent",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "두 무리를 식으로 이어요",
+      "story": "노란 점 3개와 파란 점 5개가 있어요.",
+      "prompt": "두 무리를 합친 모습을 나타낸 식은 무엇일까요?",
+      "explanation": [
+        "노란 점 3개와 파란 점 5개를 더해요.",
+        "3 + 5 = 8, 점은 모두 8개예요."
+      ],
+      "choices": [
+        "3 + 4 = 7",
+        "8 + 3 = 11",
+        "3 + 5 = 8"
+      ],
+      "answer": 2,
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "노란 점",
+            "emoji": "🟡",
+            "count": 3
+          },
+          {
+            "label": "파란 점",
+            "emoji": "🔵",
+            "count": 5
+          }
+        ]
+      },
+      "mission": {
+        "kind": "represent",
+        "total": 8,
+        "left": 3,
+        "context": "dots",
+        "unit": "개",
+        "emoji": "⭐",
+        "hints": [
+          "노란 점과 파란 점을 각각 세어 봐요.",
+          "노란 점 3개와 파란 점 5개를 더하는 식을 찾아요.",
+          "3 + 5 = 8예요. 두 무리를 합치면 점은 모두 8개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-11-explain",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "전체는 달라졌을까요",
+      "story": "왼쪽에 딸기 6개, 오른쪽에 4개가 있어요. 두 바구니 사이에서 딸기를 옮기려고 해요.",
+      "prompt": "친구들의 말 중에서 어떤 말을 고쳐야 할까요?",
+      "explanation": [
+        "딸기를 한 바구니에서 다른 바구니로 옮겨도 딸기는 없어지지 않아요.",
+        "두 바구니를 합치면 딸기는 계속 10개예요."
+      ],
+      "choices": [
+        "옮기면 딸기가 모두 9개가 돼요.",
+        "왼쪽이 5개면 오른쪽도 5개예요.",
+        "옮긴 뒤에도 딸기는 모두 10개예요."
+      ],
+      "answer": 0,
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "옮기기 전 왼쪽",
+            "emoji": "🍓",
+            "count": 6
+          },
+          {
+            "label": "옮기기 전 오른쪽",
+            "emoji": "🍓",
+            "count": 4
+          }
+        ]
+      },
+      "mission": {
+        "kind": "explain",
+        "total": 10,
+        "left": 6,
+        "context": "baskets",
+        "unit": "개",
+        "emoji": "🍓",
+        "hints": [
+          "옮긴 딸기도 두 바구니 안에 있어요.",
+          "왼쪽에서 줄어든 1개가 오른쪽에 늘어나요. 두 바구니를 합쳐 생각해 보세요.",
+          "딸기는 사라지지 않아요. 어느 바구니에 옮겨도 두 바구니를 합치면 모두 10개예요."
+        ]
+      }
+    },
+    {
+      "id": "fairy-baskets-12-stickers",
+      "level": 2,
+      "skill": "math.part-whole",
+      "canonicalConcept": "math.part-whole",
+      "title": "두 종이의 스티커",
+      "story": "스티커 6개를 노란 종이와 파란 종이에 나눠 붙였어요. 노란 종이에 4개가 있어요.",
+      "prompt": "파란 종이에 붙인 스티커는 몇 개일까요?",
+      "explanation": [
+        "전체 6개 중에서 노란 종이에 있는 4개를 빼요.",
+        "6 − 4 = 2, 파란 종이에는 스티커 2개가 있어요."
+      ],
+      "interaction": {
+        "type": "build",
+        "target": 2,
+        "max": 6,
+        "emoji": "⭐",
+        "unit": "개"
+      },
+      "mathCheck": {
+        "expression": "6-4",
+        "value": 2
+      },
+      "visual": {
+        "kind": "groups",
+        "groups": [
+          {
+            "label": "노란 종이에 붙인 스티커",
+            "emoji": "⭐",
+            "count": 4
+          }
+        ]
+      },
+      "mission": {
+        "kind": "transfer",
+        "total": 6,
+        "left": 4,
+        "context": "dots",
+        "unit": "개",
+        "emoji": "⭐",
+        "hints": [
+          "두 종이에 붙인 스티커를 합치면 모두 6개예요.",
+          "전체 6개에서 노란 종이의 4개를 빼고 나머지를 세어 보세요.",
+          "노란 종이에 4개, 파란 종이에 2개예요. 합치면 스티커 6개예요."
+        ]
+      }
+    }
+  ]
+}

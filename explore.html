@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#355c70">
+<meta name="description" content="마법마을 수학 정원, 이야기 도서관, 연못을 입체 모험 지도로 둘러보세요.">
+<title>새로 단장한 마법마을 · 3D 모험 지도</title>
+<link rel="stylesheet" href="./explore-v48.css?v=visual-v48-20261112">
+</head>
+<body>
+<main class="explore" id="explore">
+  <header class="explore-header">
+    <a class="explore-home" href="./">← 마법마을 입구</a>
+    <div class="explore-brand"><span class="explore-eyebrow">마법마을 · 3D 모험 지도</span><h1>어디부터 탐험해 볼까요?</h1>
+      <p>수학 정원의 열매 바구니, 이야기 도서관의 책, 연못의 생명들을 찾아보아요.</p>
+    </div>
+  </header>
+  <div class="explore-layout">
+    <section class="explore-visual" aria-labelledby="world-heading">
+      <h2 id="world-heading" class="visually-hidden">입체 마법마을 미리보기</h2>
+      <div id="explore-stage" class="explore-stage" data-blender-ready="false">
+        <img class="explore-poster" src="./assets/blender-v48/storybook-poster-v48.webp"
+          alt="Blender로 꾸민 마법마을. 왼쪽의 수학 정원과 도서관, 오른쪽 연못을 길이 연결하고 있어요."
+          width="1200" height="840" decoding="async">
+      </div>
+      <p id="world-status" class="explore-status" role="status">입체 지도를 불러오는 동안 그림을 볼 수 있어요.</p>
+      <p class="explore-guidance">화면을 밀거나 방향키로 돌려 보세요. 3D가 지원되지 않아도 아래 장소 버튼으로 이동할 수 있어요.</p>
+    </section>
+    <section class="explore-side" aria-labelledby="place-heading">
+      <h2 id="place-heading">오늘의 모험</h2>
+      <p class="explore-description">가고 싶은 곳을 고르면, 해당 장소로 이동할 수 있어요.</p>
+      <div class="explore-learners" role="group" aria-label="오늘 모험할 어린이 선택">
+        <button type="button" data-who="tae" aria-pressed="true">🌸 태희</button>
+        <button type="button" data-who="se" aria-pressed="false">🌙 세희</button>
+      </div>
+      <div id="explore-places" class="explore-places" role="group" aria-label="마법마을 장소 선택"></div>
+      <details class="explore-more"><summary>다른 장소도 보기</summary><div id="explore-extra-places" class="explore-extra-places" role="group" aria-label="다른 마법마을 장소"></div></details>
+      <section class="explore-selection" aria-live="polite">
+        <p class="explore-selection-eyebrow">선택한 목적지</p>
+        <h3 id="explore-place-title">수학 정원</h3>
+        <p id="explore-place-description">열매를 옮겨 보고 전체 수가 어떻게 되는지 알아보아요.</p>
+      </section>
+      <div class="explore-actions">
+        <a id="explore-go-village" class="explore-primary" href="./village/?who=tae&amp;autostart=1&amp;go=math&amp;v=48">3D 마을로 이동하기</a>
+        <a id="explore-go-learning" class="explore-secondary" href="./learning.html?who=tae&amp;subject=math">학습부터 시작하기</a>
+      </div>
+      <p class="explore-trust">이 지도는 둘러보기 전용입니다. 학습 기록과 보상은 기존 마법마을에서 관리해요.</p>
+    </section>
+  </div>
+</main>
+<script type="module" src="./platform/explore-v48.js?v=visual-v48-20261112"></script>
+</body>
+</html>

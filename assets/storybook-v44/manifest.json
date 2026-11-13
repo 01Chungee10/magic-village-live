@@ -1,0 +1,81 @@
+{
+  "version": 44,
+  "source": "Actual Unity Editor rendering of the current native play-space models; no generated concept image is used in the game",
+  "files": [
+    {
+      "path": "assets/storybook-v44/entry.webp",
+      "bytes": 180336,
+      "sha256": "3bcb5b903e75561ce78d248da81ea38b830926ed0308efcb781e271acb4ead13"
+    },
+    {
+      "path": "assets/storybook-v44/icons/academy.png",
+      "bytes": 123744,
+      "sha256": "fcb410de8dd9f6d386f5c9bbda06f87a88eb27f5ef57ae8af4d71741ea273380"
+    },
+    {
+      "path": "assets/storybook-v44/icons/career.png",
+      "bytes": 107717,
+      "sha256": "82c0405970a924c5525ca82a215a453c49c1a4905a9418ce6d66125b0b7706a5"
+    },
+    {
+      "path": "assets/storybook-v44/icons/english.png",
+      "bytes": 106893,
+      "sha256": "8141c6a4bd2cc86084e4fd202fa05a0d45435986f84c4a9393cbb924c98543ef"
+    },
+    {
+      "path": "assets/storybook-v44/icons/garden.png",
+      "bytes": 48353,
+      "sha256": "f28a16b571c3dcfa8f57b99b8d09744627281fb23075320c337eb8b248c7cb08"
+    },
+    {
+      "path": "assets/storybook-v44/icons/growth.png",
+      "bytes": 123744,
+      "sha256": "fcb410de8dd9f6d386f5c9bbda06f87a88eb27f5ef57ae8af4d71741ea273380"
+    },
+    {
+      "path": "assets/storybook-v44/icons/hanja.png",
+      "bytes": 107111,
+      "sha256": "7e798c803dd230a7e8ea10fbed40592337c88d493cc9184ed3f8d5065715cbcc"
+    },
+    {
+      "path": "assets/storybook-v44/icons/kma.png",
+      "bytes": 94796,
+      "sha256": "e837c59eaa90aaa32f5cc07e7b9f67170e25947b05461e8343e457fa2087570f"
+    },
+    {
+      "path": "assets/storybook-v44/icons/korean.png",
+      "bytes": 106466,
+      "sha256": "c63237573369b17fb1978e9399392e47dd183254125014dc183ae1092304328c"
+    },
+    {
+      "path": "assets/storybook-v44/icons/math.png",
+      "bytes": 94796,
+      "sha256": "e837c59eaa90aaa32f5cc07e7b9f67170e25947b05461e8343e457fa2087570f"
+    },
+    {
+      "path": "assets/storybook-v44/icons/ocean.png",
+      "bytes": 73388,
+      "sha256": "2381099475f372035eebe0ebb750b64bf3564b49fd44022fd2c54f5f5d734bd2"
+    },
+    {
+      "path": "assets/storybook-v44/icons/plaza.png",
+      "bytes": 15168,
+      "sha256": "305403826b7d12efe43ed6891b5527a7c1cc5e965fa40340434ff850ac78100c"
+    },
+    {
+      "path": "assets/storybook-v44/icons/pond.png",
+      "bytes": 62632,
+      "sha256": "b1cc0eb3d0a9c017db41ee6e65b6ddfad8f8be1775159e2c1f56877bdd58c524"
+    },
+    {
+      "path": "assets/storybook-v44/icons/practice.png",
+      "bytes": 105408,
+      "sha256": "5aa022516c578245d8d05c85674f00bcd46a2721a8e47b439f02dcede55054b3"
+    },
+    {
+      "path": "assets/storybook-v44/world.webp",
+      "bytes": 180336,
+      "sha256": "3bcb5b903e75561ce78d248da81ea38b830926ed0308efcb781e271acb4ead13"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+/* v48 visual enhancement: readable map without removing existing fallback links. */
+/* Override v45 interior decor hiding only while the real map is the active view. */
+#village-ui[data-interior][data-mode="map"] .vh-blender-map-details{display:block!important}
+#village-ui .vh-blender-map-details{border-color:#c2aedb;background:linear-gradient(150deg,#fcf9ef,#e9f5f1);box-shadow:0 8px 22px #334c5919}
+#village-ui .vh-blender-map-details > summary{color:#3f436d}
+#village-ui .vh-blender-stage{background:#a7dbe4;border-color:#a4c2b8;min-height:230px}
+#village-ui .vh-blender-stage .vh-blender-map-poster{object-fit:cover}
+#village-ui .vh-blender-stage .blender-v41-canvas{width:100%;height:100%}
+#village-ui .vh-blender-stage canvas:focus-visible{outline:4px solid #734abf;outline-offset:-6px}
+#village-ui .vh-v48-map-note{margin:10px 4px 6px;font-size:clamp(14px,1.7vw,16px);line-height:1.5;color:#394959}
+@media(max-width:700px){#village-ui .vh-blender-stage{height:245px}#village-ui .vh-blender-stage .blender-v41-marker{min-height:44px}}
+@media(prefers-reduced-motion:reduce){#village-ui .vh-blender-stage *{animation:none!important;scroll-behavior:auto}}

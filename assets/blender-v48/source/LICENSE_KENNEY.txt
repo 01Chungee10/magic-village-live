@@ -1,0 +1,12 @@
+Kenney asset pack provenance
+
+Copyright holder: Kenney (https://kenney.nl)
+License: CC0 1.0 Universal, as published on each official pack page.
+Official source pages:
+https://kenney.nl/assets/furniture-kit
+https://kenney.nl/assets/food-kit
+https://kenney.nl/assets/space-kit
+https://kenney.nl/assets/cube-pets
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/
+
+The GLB files in this staging originated from Hidencod/tge-assets, a third-party GLB conversion of Kenney source packs; they are not author-created .blend project files. Review original releases and conversion integrity before commercial redistribution. No credit is required by CC0, but this notice preserves provenance.
