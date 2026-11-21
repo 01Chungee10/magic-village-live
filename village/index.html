@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-ui="50">
+<html lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
@@ -56,7 +56,6 @@ button:disabled{opacity:.5;cursor:wait}button:focus-visible,a:focus-visible{outl
   #loading[data-preparing="true"] .title-entry-links a:first-child{grid-column:1/-1}
 }
 </style>
-<link rel="stylesheet" href="../interface-v50.css?v=interface-v50-20261115">
 </head>
 <body>
 <div id="page">
@@ -127,9 +126,9 @@ button:disabled{opacity:.5;cursor:wait}button:focus-visible,a:focus-visible{outl
 </div>
 <script type="importmap">{"imports":{"../platform/progress.js":"../platform/progress.js?v=concept-baskets-v47-20261108","../platform/rewards.js":"../platform/rewards.js?v=unified-20261013","../platform/growth.js":"../platform/growth.js?v=unified-20261013","../platform/settings.js":"../platform/settings.js?v=unified-20261013","../platform/activities.js":"../platform/activities.js?v=unified-20261013","../platform/activity-ui.js":"../platform/activity-ui.js?v=refactor-v39-20261102","../platform/catalog.js":"../platform/catalog.js?v=concept-baskets-v47-20261108","../platform/irt.js":"../platform/irt.js?v=refactor-v39-20261102","../platform/legacy.js":"../platform/legacy.js?v=unified-20261013","../platform/reward-catalog.js":"../platform/reward-catalog.js?v=unified-20261013","../platform/village-adaptive.js":"../platform/village-adaptive.js?v=unified-20261013","../platform/motion.js":"../platform/motion.js?v=unified-20261013","./garden-state.js":"./garden-state.js?v=unified-20261013","./village-state.js":"./village-state.js?v=unified-20261013","../platform/resource-economy.js":"../platform/resource-economy.js?v=pond-v34-20261021","../platform/response-log.js":"../platform/response-log.js?v=pond-v34-20261021","../platform/pond-session.js":"../platform/pond-session.js?v=pond-v34-20261021","../platform/pond-learning-guide.js":"../platform/pond-learning-guide.js?v=pond-v34-20261021"}}</script>
 <script type="module">
-import { createVillageHost } from './village-bridge.js?v=interface-v50-20261115';
+import { createVillageHost } from './village-bridge.js?v=concept-baskets-v47-20261108';
 import * as Progress from '../platform/progress.js';
-import { createVillageUI } from './village-ui.js?v=interface-v50-20261115';
+import { createVillageUI } from './village-ui.js?v=entry-recovery-v47-20261108';
 import { createStartupTask } from './startup-task.js?v=entry-recovery-v47-20261108';
 import * as CloudSync from '../platform/cloud-sync.js?v=canonical-v35-20261023';
 import {koreaScene,applyKoreaScene,SEASONS,DAYPARTS} from './korea-season-clock.js?v=world-v26-20261019';
@@ -530,6 +529,5 @@ if(autoStartRequested)queueMicrotask(()=>{
 });
 </script>
 <script type="module">import {mountCohesiveUI} from "./cohesive-ui-v46.js?v=cohesive-v46-20261105";mountCohesiveUI();</script>
-<script type="module" src="../platform/interface-v50.js?v=interface-v50-20261115"></script>
 </body>
 </html>

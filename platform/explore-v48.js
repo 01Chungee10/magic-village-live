@@ -29,7 +29,7 @@ function choose(place){
   $('explore-place-description').textContent=descriptions[place];
   const whom=encodeURIComponent(learner);
   const routable=!['garden','plaza'].includes(place);
-  $('explore-go-village').href='./village/?who='+whom+'&autostart=1&v=50'+(routable?'&go='+encodeURIComponent(place):'');
+  $('explore-go-village').href='./village/?who='+whom+'&autostart=1&v=48'+(routable?'&go='+encodeURIComponent(place):'');
   $('explore-go-village').textContent=routable?'3D 마을에서 '+blenderDestinations[place]+'로 이동하기':'3D 마을 입장하기';
   const subject=['math','korean','english','hanja'].includes(place)?'&subject='+place:'';
   $('explore-go-learning').href='./learning.html?who='+whom+subject;

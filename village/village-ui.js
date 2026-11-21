@@ -76,12 +76,12 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     '<div id="village-dialog-wrap" hidden aria-busy="false">',
     ' <section class="vh-dialog" role="dialog" aria-modal="true" aria-labelledby="vh-title">',
     '  <header class="vh-dialog-title"><h2 id="vh-title" tabindex="-1">배움 이야기</h2>',
-    '    <span class="vh-progress" id="vh-counter"></span><button type="button" class="vh-close-header" id="vh-close-header" aria-label="마을로 돌아가기">×</button></header>',
+    '    <span class="vh-progress" id="vh-counter"></span></header>',
     '  <div class="vh-dialog-body" id="vh-body"></div>',
     '  <footer class="vh-dialog-footer"><button class="vh-secondary" id="vh-listen" type="button">🔊 읽어줘</button>',
     '   <button class="vh-secondary" id="vh-hint" type="button" hidden>💡 힌트</button>',
     '   <button class="vh-secondary" id="vh-exit" type="button">잠깐 쉬기</button>',
-    '   <button type="button" class="ui-preference" data-ui-action="text-size" aria-label="큰 글자로 보기" aria-pressed="false">가+</button><p class="vh-small" id="vh-note">답을 찾아가는 과정도 소중해요.</p></footer>',
+    '   <p class="vh-small" id="vh-note">답을 찾아가는 과정도 소중해요.</p></footer>',
     ' </section>',
     '</div>'
   ].join('');
@@ -381,7 +381,7 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     ui.counter.textContent='어디든 갈 수 있어요';
     ui.note.textContent='원하는 곳부터 시작해요. 오늘 쉬었다가 내일 놀아도 괜찮아요.';
     voiceText='마음에 드는 장소를 골라서 마법 친구들의 이야기를 들어 보아요.';
-    paragraph('가고 싶은 장소를 골라요. 아래로 내리면 다른 장소도 볼 수 있어요.','vh-story vh-story-intro');
+    paragraph('장소를 눌러 바로 이동해요. 지도를 옆으로 넘기면 더 많은 장소가 보여요.','vh-story vh-story-intro');
     const blenderMenu=label('details','','vh-blender-map-details');
     const blenderSummary=label('summary','🏰 새 마을 전체 모습 보기');
     const blenderHost=label('div','','vh-blender-stage');
@@ -579,7 +579,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
   root.addEventListener('pointerdown', e => { if (e.target.closest('button,input,select,a,.vh-dialog')) sendToUnity('UI_POINTER'); },true);
   root.addEventListener('pointerup', e => { if (e.target.closest('button,input,select,a,.vh-dialog')) sendToUnity('UI_POINTER'); },true);
   ui.exit.addEventListener('click',close);
-  $('vh-close-header').addEventListener('click',close);
   ui.hint.addEventListener('click',()=>{if (phase==='question') request('HINT');});
   root.addEventListener('keydown',event=>{
     if (ui.dialog.hidden) return;
@@ -604,18 +603,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     utterance.rate = who === 'se' ? 0.84 : 0.94;
     window.speechSynthesis.speak(utterance);
   });
-  const modalBackground=new Map();
-  function setModalBackground(active){
-    if(active){
-      if(modalBackground.size)return;
-      const nodes=[...root.children].filter(node=>node!==ui.dialog);
-      const canvas=document.querySelector('#canvas');if(canvas)nodes.push(canvas);
-      for(const node of nodes){modalBackground.set(node,node.inert);node.inert=true;}
-    }else{
-      for(const [node,wasInert] of modalBackground)node.inert=wasInert;
-      modalBackground.clear();
-    }
-  }
   function close() {
     contentWorld?.close();
     disposeBlenderViewer();
@@ -626,7 +613,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     Promise.resolve().then(()=>sendRequest({action:'CANCEL',requestId:nextId(),gameId})).catch(()=>{});
     window.speechSynthesis?.cancel();
     ui.dialog.hidden = true;
-    setModalBackground(false);
     ui.controls.hidden = false;
     ui.help.hidden = false;
     ui.help.removeAttribute('data-travel');
@@ -652,7 +638,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     // not phase, to preserve the actual launcher for keyboard focus return.
     if (ui.dialog.hidden) lastFocus = document.activeElement;
     ui.dialog.hidden = false;
-    setModalBackground(true);
     ui.controls.hidden = true;
     ui.help.hidden = true;
     ui.shortcuts.hidden=true;
@@ -669,7 +654,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     ui.dialog.querySelectorAll('.vh-number-submit').forEach(el=>el.remove());
     ui.dialog.querySelector('.vh-dialog-footer')?.classList.remove('vh-has-keypad');
     ui.body.replaceChildren();
-    ui.body.scrollTop=0;
     contentTarget=ui.body;
     ui.dialog.setAttribute('aria-busy','false');
     busy = false;
@@ -787,40 +771,6 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     footer.prepend(check);
     refresh();
   }
-  function sequenceQuestion(q){
-    const items=q.items||[],memory=q.interactionType==='memory';
-    if(!items.length){paragraph('문항을 불러오지 못했어요. 잠깐 쉬기를 눌러 다시 골라 주세요.','vh-story');return;}
-    const host=label('section','','ui-sequence');contentTarget.append(host);
-    let selected=[],revealed=memory&&Array.isArray(q.memoryPreview)&&q.memoryPreview.length===items.length;
-    const order=items.map((_,i)=>i);
-    for(let n=order.length-1;n>0;n--){const k=Math.floor(Math.random()*(n+1));[order[n],order[k]]=[order[k],order[n]];}
-    function render(focus=''){
-      host.replaceChildren();
-      if(revealed){
-        host.append(label('p','순서를 살펴봐요. 준비되면 가리고 기억한 대로 놓아요.','ui-helper'));
-        const preview=label('ol','','ui-sequence-preview');
-        preview.setAttribute('aria-label','기억할 순서');
-        q.memoryPreview.forEach((text,i)=>{const item=label('li','','');item.append(label('small',i+1+'번째'),label('strong',text));preview.append(item);});
-        host.append(preview,button('기억했어요 · 가리고 시작',()=>{revealed=false;render('tile');},'vh-wide ui-memory-ready'));
-        return;
-      }
-      host.append(label('p',memory?'기억한 순서대로 하나씩 골라요.':'먼저 올 것부터 차례로 골라요.','ui-helper'));
-      const slots=label('ol','','ui-sequence-slots');slots.setAttribute('aria-label','내가 놓은 순서');
-      items.forEach((_,i)=>{const slot=label('li','','');slot.append(label('small',(i+1)+'번째'),label('strong',selected[i]===undefined?'아직 비었어요':items[selected[i]]));slots.append(slot);});
-      const tiles=label('div','','ui-sequence-tiles');tiles.setAttribute('role','group');tiles.setAttribute('aria-label','차례대로 놓을 보기');
-      order.forEach(i=>{const tile=button(items[i],()=>{if(busy||selected.includes(i))return;selected.push(i);render('tile');},'vh-option');tile.dataset.sequenceIndex=String(i);tile.disabled=selected.includes(i);tiles.append(tile);});
-      const tools=label('div','','ui-sequence-tools');
-      const undo=button('하나 되돌리기',()=>{selected.pop();render('undo');},'vh-secondary');undo.dataset.sequenceAction='undo';undo.disabled=!selected.length;
-      const reset=button('처음부터 놓기',()=>{selected=[];render('tile');},'vh-secondary');reset.disabled=!selected.length;
-      tools.append(undo,reset);
-      const status=label('p',selected.length+' / '+items.length+'개 놓았어요.','ui-choice-status');status.setAttribute('role','status');
-      const confirm=button('내가 놓은 순서 확인하기',()=>{if(selected.length===items.length)submit([...selected]);},'vh-wide ui-sequence-submit');confirm.disabled=selected.length!==items.length;
-      host.append(slots,tiles,tools,status,confirm);
-      if(focus==='tile')(tiles.querySelector('button:not(:disabled)')||confirm).focus({preventScroll:true});
-      else if(focus==='undo')(undo.disabled?tiles.querySelector('button:not(:disabled)'):undo)?.focus({preventScroll:true});
-    }
-    render();
-  }
   function matchQuestion(q) {
     const left = q.left?.length ? q.left : q.items;
     const right = q.right?.length ? q.right : q.items;
@@ -889,9 +839,7 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     const image=document.createElement('img');
     image.src=src; image.alt=title; image.loading='lazy';
     image.decoding='async'; image.className='vh-original-image';
-    const enlarge=button('그림 크게 보기',()=>{},'ui-zoom-trigger');
-    enlarge.dataset.uiAction='zoom-image';enlarge.dataset.uiImage=src;enlarge.dataset.uiImageTitle=title;
-    figure.append(image,enlarge,label('figcaption','그림을 확대해서 자세히 살펴볼 수 있어요.','vh-small'));
+    figure.append(image,label('figcaption','뱁수 경시대회 원본 그림을 보고 풀어 보세요.','vh-small'));
     contentTarget.append(figure);
   }
   function showChallengePicker(result) {
@@ -1369,37 +1317,18 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     contentTarget.append(stage);
     return stage;
   }
-  function choiceQuestion(q,parent=contentTarget,css='vh-option'){
-    let selected=null;
-    const options=label('div','','vh-options ui-village-options');
-    options.setAttribute('role','group');options.setAttribute('aria-label','답 고르기');
-    const status=label('p','보기를 고른 다음, 아래에서 답을 확인해요.','ui-choice-status');
-    status.setAttribute('role','status');status.setAttribute('aria-live','polite');
-    const check=button('고른 답 확인하기',()=>{if(selected!==null)submit(selected);},'vh-wide ui-choice-submit');
-    check.disabled=true;
-    (q.choices||[]).forEach((text,i)=>{
-      const option=button('',()=>{
-        if(busy||phase!=='question')return;
-        selected=i;
-        for(const [j,node] of [...options.children].entries()){
-          node.setAttribute('aria-pressed',String(i===j));
-          node.querySelector('.ui-choice-check').textContent=i===j?'✓':'';
-        }
-        status.textContent=(i+1)+'번을 골랐어요. 확인하기 전에는 바꿀 수 있어요.';
-        check.disabled=false;
-      },css+' ui-choice');
-      option.setAttribute('aria-pressed','false');option.dataset.choice=String(i);
-      const number=label('span',i+1,'ui-choice-marker');number.setAttribute('aria-hidden','true');
-      const mark=label('span','','ui-choice-check');mark.setAttribute('aria-hidden','true');
-      option.append(number,label('span',text,'ui-choice-label'),mark);
-      options.append(option);
-    });
-    parent.append(options,status,check);
-  }
   function spatialChoice(q){
     const stage=spatialStage(q);
-    stage.append(label('p','마법문을 고르고, 내 답을 확인해요.','vh-spatial-instruction'));
-    choiceQuestion(q,stage,'vh-spatial-gate');
+    const hint=label('p','정답이 있다고 생각하는 마법문을 눌러 열어 봐요.','vh-spatial-instruction');
+    stage.append(hint);
+    const gates=label('div','','vh-spatial-gates');
+    for(let i=0;i<q.choices.length;i++){
+      const gate=button((i+1)+'번 문 · '+q.choices[i],()=>submit(i),'vh-spatial-gate');
+      gate.setAttribute('aria-label',(i+1)+'번째 마법문 '+q.choices[i]);
+      gate.prepend(label('span','✦','vh-gate-star'));
+      gates.append(gate);
+    }
+    stage.append(gates);
   }
   function spatialBuild(q){
     const stage=spatialStage(q);
@@ -1426,41 +1355,49 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
   }
 
   function showQuestion(q) {
-    if(!q)return;
-    phase='question';question=q;gameId=q.gameId;
+    if (!q) return;
+    phase='question'; question=q; gameId=q.gameId;
     root.dataset.questionId=q.questionId;root.dataset.gameId=q.gameId;root.dataset.questionSubject=q.subject||'';
-    open();resetBody();
+    open(); resetBody();
     const skin=q.total===25?'tome':(q.gameId==='kind-dialogue'||q.gameId?.startsWith('hanja-'))?'scroll':'crystal';
     theme(skin);root.dataset.mode='question';
-    ui.title.textContent=q.title||'생각해 볼까요?';
-    ui.counter.textContent=(q.index||1)+' / '+(q.total||3);
+    ui.title.textContent=(q.gameId?.startsWith('hanja-')?'📜 ':'🧩 ')+(q.title || '생각해 볼까요?');
+    ui.counter.textContent=(q.index || 1)+' / '+(q.total || 3);
+    if(q.pondGuided)paragraph('🌿 배움 산책 · '+({math:'수학',korean:'국어',english:'영어',hanja:'한자'}[q.subject]||'새로운 배움')+'에서 만난 이야기','pond-learning-progress');
     showRoundCue(Math.max(0,(q.index||1)-1),q.total||3);
     voiceText=[q.story,q.prompt,...(q.choices||[])].filter(Boolean).join('. ');
-    if(q.pondGuided)paragraph('배움 산책 · '+({math:'수학',korean:'국어',english:'영어',hanja:'한자'}[q.subject]||'새로운 배움'),'pond-learning-progress');
-    const grid=label('div','','ui-question-grid');
-    const context=label('section','','ui-question-context');context.setAttribute('aria-label','문제 살펴보기');
-    const answer=label('section','','ui-answer-panel');answer.setAttribute('aria-label','내 생각으로 답하기');
-    grid.append(context,answer);ui.body.append(grid);
-    contentTarget=context;
-    paragraph('01 · 문제를 살펴봐요','ui-section-label');
-    if(q.story)paragraph(q.story,'vh-story');
-    showOriginalImage(q.problemImage,(q.index||1)+'번 문제 그림');
+    if(skin==='tome'){
+      const book=label('section','','vh-book-spread');
+      const left=label('section','','vh-book-page vh-book-left');
+      const right=label('section','','vh-book-page vh-book-right');
+      book.append(left,right);ui.body.append(book);
+      contentTarget=left;
+    }
+    if (q.story) paragraph(q.story,'vh-story');
+    showOriginalImage(q.problemImage,'경시대회 '+(q.index||1)+'번 문제 그림');
+    if(skin==='tome')contentTarget=ui.body.querySelector('.vh-book-right');
+    paragraph(q.prompt || '무엇을 선택할까요?','vh-prompt');
     showVisual(q.visual);
-    paragraph(q.prompt||'무엇을 선택할까요?','vh-prompt');
-    if(q.gameId?.startsWith('hanja-'))context.querySelector('.vh-visual-word')?.classList.add('vh-hanja-character');
-    contentTarget=answer;
-    paragraph('02 · 내 생각으로 답해요','ui-section-label');
-    const mode=q.interactionType||'choice';
+    if(q.gameId?.startsWith('hanja-'))ui.body.querySelector('.vh-visual-word')?.classList.add('vh-hanja-character');
+    const mode=q.interactionType || 'choice';
     if(useSpatialInteraction(q)){
-      if(mode==='choice')spatialChoice(q);else spatialBuild(q);
-    }else if(mode==='choice')choiceQuestion(q);
-    else if(mode==='build'||mode==='numeric')numericQuestion(q,mode);
-    else if(mode==='match')matchQuestion(q);
-    else if(mode==='sequence'||mode==='memory')sequenceQuestion(q);
-    else paragraph('이 유형은 학습페이지에서 이어서 풀 수 있어요.','vh-story');
+      if(mode==='choice')spatialChoice(q);
+      else spatialBuild(q);
+    } else if (mode==='choice') {
+      const options = label('div','', 'vh-options');
+      (q.choices||[]).forEach((text,i)=>{
+        options.append(button((i+1)+'. '+text,()=>submit(i)));
+      });
+      contentTarget.append(options);
+    } else if (mode==='build' || mode==='numeric') numericQuestion(q,mode);
+    else if (['match','sequence','memory'].includes(mode)) matchQuestion(q);
+    else paragraph('아직 지원하지 않는 학습 유형이에요. 반짝 배움터에서 이어서 풀 수 있어요.','vh-story');
     contentTarget=ui.body;
-    ui.listen.hidden=false;ui.note.textContent='문제를 다시 읽고, 내 속도로 생각해도 괜찮아요.';
-    ui.hint.hidden=!q.hintAvailable;ui.hint.disabled=false;ui.exit.hidden=false;
+    ui.listen.hidden = false;
+    ui.note.textContent='힌트와 해설을 보며 천천히 배워요.';
+    ui.hint.hidden=!q.hintAvailable;
+    ui.hint.disabled=false;
+    ui.exit.hidden = false;
     ui.title.focus({preventScroll:true});
   }
   function showRoundCue(answered,total) {
@@ -1485,7 +1422,7 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     showRoundCue(question?.index||1,question?.total||3);
     showRewardArt(result.correct && (result.earned??0)>0 ? (gameId==='kind-dialogue'?'star_purple':'star_yellow') : 'sprout');
     showOriginalImage(question?.solutionImage,'경시대회 '+(question?.index||1)+'번 풀이 그림');
-    paragraph(result.correct ? '좋아요! 생각한 답이 맞았어요.' : '틀려도 괜찮아요. 아래 풀이를 함께 살펴봐요.','vh-feedback');
+    paragraph(result.correct ? '좋아요! 생각한 답이 맞았어요.' : '다른 방법을 하나 배웠어요.','vh-feedback');
     const coins=gainedFromAnswer.map(gain=>resourceMeta[gain.subject][0]+' '+resourceMeta[gain.subject][1]+' +'+gain.amount).join(' · ');
     paragraph(coins ? '🎉 새로 모은 배움 재료 '+coins :
       result.correct?'✨ 이미 만난 문제라도 다시 생각해 봤어요.':'다른 방법도 하나 알아봤어요.','vh-prompt');
@@ -1493,7 +1430,7 @@ export function createVillageUI({root, sendToUnity, sendRequest}) {
     paragraph(result.explanation || '차근차근 생각해 봐요.','vh-explanation');
     voiceText=result.explanation||'';
     if(result.pondGuided)showPondLearningProgress(result.pondSession);
-    ui.body.append(button(result.pondGuided&&result.pondSession?.allowed?'연못에 다시 가기 →':'다음 문제 →',()=>request('NEXT'),'vh-wide'));
+    ui.body.append(button(result.pondGuided&&result.pondSession?.allowed?'연못에 다시 가기 →':'다음 이야기 →',()=>request('NEXT'),'vh-wide'));
     ui.note.textContent='다시 생각하는 순간도 소중한 배움이에요.';
     ui.listen.hidden = !voiceText;
     ui.title.focus({preventScroll:true});

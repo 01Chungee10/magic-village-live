@@ -142,7 +142,6 @@ export function createVillageHost(emit) {
       left: item.interaction?.left ?? [],
       right: item.interaction?.rightLabels ?? item.interaction?.right ?? [],
       items: item.interaction?.itemLabels ?? item.interaction?.items ?? [],
-      memoryPreview: mode === 'memory' ? item.interaction.order.map(index => (item.interaction.itemLabels ?? item.interaction.items)[index]) : [],
       emoji: item.interaction?.emoji ?? item.visual?.emoji ?? '⭐',
       unit: item.interaction?.unit ?? '',
       target: mode === 'build' ? item.interaction.target : 0,

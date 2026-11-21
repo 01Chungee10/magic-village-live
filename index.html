@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-ui="50">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -22,7 +22,6 @@
 </style>
 <link rel="stylesheet" href="./cohesive-style-v46.css?v=cohesive-v46-20261105">
 <link rel="stylesheet" href="./entry-v48.css?v=visual-v48-20261112">
-<link rel="stylesheet" href="./interface-v50.css?v=interface-v50-20261115">
 </head>
 <body>
 <main id="entry-world" class="entry-world">
@@ -42,10 +41,9 @@
       <button class="entry-learner-choice" type="button" data-learner="se" aria-pressed="false"><img src="./assets/cohesive-v46/characters/se.png" width="54" height="54" alt=""><span>세희<small>연보라 달 요정</small></span></button>
     </div>
     <div class="entry-game-actions">
-      <a id="entry-village-link" class="entry-portal entry-portal-primary" href="./village/?who=tae&amp;autostart=1&amp;v=50"><span class="entry-portal-icon" aria-hidden="true">🏰</span><span class="entry-portal-text"><strong>마을 입장</strong><small>선택한 요정으로 3D 마을에 바로 들어가요</small></span><span class="entry-arrow" aria-hidden="true">›</span></a>
-      <a id="entry-learning-link" class="entry-portal entry-portal-study" href="./learning.html?who=tae&amp;v=50"><span class="entry-portal-icon" aria-hidden="true">📚</span><span class="entry-portal-text"><strong>학습페이지 입장</strong><small>선택한 아이의 수학·국어·영어·한자를 바로 이어가요</small></span><span class="entry-arrow" aria-hidden="true">›</span></a>
+      <a id="entry-village-link" class="entry-portal entry-portal-primary" href="./village/?who=tae&amp;autostart=1&amp;v=49"><span class="entry-portal-icon" aria-hidden="true">🏰</span><span class="entry-portal-text"><strong>마을 입장</strong><small>선택한 요정으로 3D 마을에 바로 들어가요</small></span><span class="entry-arrow" aria-hidden="true">›</span></a>
+      <a id="entry-learning-link" class="entry-portal entry-portal-study" href="./learning.html?who=tae&amp;v=47"><span class="entry-portal-icon" aria-hidden="true">📚</span><span class="entry-portal-text"><strong>학습페이지 입장</strong><small>선택한 아이의 수학·국어·영어·한자를 바로 이어가요</small></span><span class="entry-arrow" aria-hidden="true">›</span></a>
     </div>
-    <div class="ui-entry-tools"><button type="button" class="ui-preference" data-ui-action="text-size" aria-label="큰 글자로 보기" aria-pressed="false">가+</button></div>
     <p class="entry-world-notice">🧭 3D 마을 · 📜 한자 수련관 · 🏛️ 100가지 미래 직업 · 🐠 생명 연못 · 🌊 푸른 바다</p>
     <a id="entry-explore-link" class="entry-v48-explore" href="./explore.html?who=tae">🗺️ 새로 단장한 3D 모험 지도 둘러보기</a>
   </section>
@@ -66,8 +64,8 @@ function selectLearner(who){
   if(who!=='tae'&&who!=='se')return;
   Progress.selectLearner(who);
   document.querySelectorAll('[data-learner]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.learner===who)));
-  village.href='./village/?who='+encodeURIComponent(who)+'&autostart=1&v=50'+(selectedDestination?'&go='+selectedDestination:'');
-  learning.href='./learning.html?who='+encodeURIComponent(who)+'&v=50'+(new Set(['math','korean','english','hanja']).has(selectedDestination)?'&subject='+selectedDestination:'');
+  village.href='./village/?who='+encodeURIComponent(who)+'&autostart=1&v=49'+(selectedDestination?'&go='+selectedDestination:'');
+  learning.href='./learning.html?who='+encodeURIComponent(who)+'&v=47'+(new Set(['math','korean','english','hanja']).has(selectedDestination)?'&subject='+selectedDestination:'');
   document.querySelector('#entry-explore-link').href='./explore.html?who='+encodeURIComponent(who);
 }
 document.querySelectorAll('[data-learner]').forEach(button=>button.addEventListener('click',()=>selectLearner(button.dataset.learner)));
@@ -76,6 +74,5 @@ selectLearner(initial);
 if(location.search)history.replaceState(history.state,'',location.pathname+location.hash);
 </script>
 <script type="module">import {mountCohesiveUI} from "./village/cohesive-ui-v46.js?v=cohesive-v46-20261105";mountCohesiveUI();</script>
-<script type="module" src="./platform/interface-v50.js?v=interface-v50-20261115"></script>
 </body>
 </html>
